@@ -1,4 +1,5 @@
 # TRANSCEND-NG 2MSSB
-## Led by: Henry (Buggz) KD9YWF
+#### An open-source 2 meter single-sideband radio developed for the POTA/SOTA and exploring communities.
 
-## Transcend-NG iS an open source community, focused on building radios for the amateur community.
+### Transcend-NG iS an open source community, focused on building radios for the amateur community.
+##
