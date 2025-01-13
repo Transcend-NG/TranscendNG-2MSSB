@@ -2,10 +2,10 @@
 #define TRAIL_WAVE
 
 #include <U8g2lib.h>
-#include "si5351.h" 
 #include <Preferences.h>
 
 #define IF 455
+//#define MEM_INIT 2
 #define XT_CAL_F 33000
 #define S_GAIN 303
 
@@ -22,11 +22,11 @@
 // PCF8575 pins
 #define FREQ_DOWN_PIN 15          // PCF8575 pin for Freq Down pin 
 #define FREQ_UP_PIN 14            // PCF8575 pin for Freq Up pin 
-//#define ID_TMR_PIN 0              // PCF8575 pin for ID Timer Enable/DisAble.
-//#define ID_TMR_RST_PIN 1          // PCF8575 pin for ID Timer Reset.
 #define MEM_DOWN_PIN 3            // PCF8575 pin for decreasing band selection.
 #define MEM_UP_PIN 2              // PCF8575 pin for increasing band selection.
 #define MODE_PIN 13               // PCF8575 pin for Encoder button (menu/select).
+#define SAVE_PIN 0                // PCF8575 pin for prefs save.
+#define LOAD_PIN 1                // PCF8575 pin for prefs load.
 #define RIT_PIN 5                 // PCF8575 pin for Receiver Incremental Tuning (RIT) Encable/Disable pin (toggles RIT on/off). (RIT)
 #define RIT_DOWN_PIN 7            // PCF8575 pin for Receiver Incremental Tuning (RIT) down button pin.(RIT)
 #define RIT_UP_PIN 6              // PCF8575 pin for Receiver Incremental Tuning (RIT) up button pin.(RIT)
@@ -39,8 +39,6 @@
 
 // U8G2 ssd1306/sd1109 Displey
 #define U8G2_OLED U8G2_SSD1306_128X64_NONAME_F_HW_I2C
-//Si5351 
-#define Si5351 si5351;
 
 const unsigned long FREQ_MIN = 144000000;
 const unsigned long FREQ_MAX = 144650000;
@@ -48,7 +46,6 @@ const unsigned long FREQ_MAX = 144650000;
 class TrailRadio {
   private:
     U8G2_OLED* u8g2;
-    Si5351* si5351;
     Preferences prefs;
 
     unsigned int smval;
@@ -115,7 +112,7 @@ class TrailRadio {
     void toggleSplitMode();
     void adjustRIT(short dir);
     void set_frequency(short dir);
-    void init(Si5351* clk_gen, U8G2_OLED* display);
+    void init(U8G2_OLED* display);
 };
 
 #endif

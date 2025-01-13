@@ -85,15 +85,15 @@ void TrailRadio::tunegen() {
 
   if (!pttButtonState) {
     if (rit_enabled && !split_mode) {
-      si5351.set_freq((freq + rit_offset + tone_offset + (interfreq * 1000ULL)) * 100ULL, SI5351_CLK0);
+      //si5351.set_freq((freq + rit_offset + tone_offset + (interfreq * 1000ULL)) * 100ULL, SI5351_CLK0);
     } else {
-      si5351.set_freq((freq + tone_offset + (interfreq * 1000ULL)) * 100ULL, SI5351_CLK0);
+      //si5351.set_freq((freq + tone_offset + (interfreq * 1000ULL)) * 100ULL, SI5351_CLK0);
     }
   } else {  // Transmit mode
     if (split_mode) {
-      si5351.set_freq((freqB + tone_offset + (interfreq * 1000ULL)) * 100ULL, SI5351_CLK0);
+      //si5351.set_freq((freqB + tone_offset + (interfreq * 1000ULL)) * 100ULL, SI5351_CLK0);
     } else {
-      si5351.set_freq((freqA + tone_offset + (interfreq * 1000ULL)) * 100ULL, SI5351_CLK0);
+      //si5351.set_freq((freqA + tone_offset + (interfreq * 1000ULL)) * 100ULL, SI5351_CLK0);
     }
   }
 }

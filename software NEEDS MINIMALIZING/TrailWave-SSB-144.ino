@@ -6,8 +6,11 @@ TrailRadio trailRadio;
 
 PCF8575Debounce pcf;
 
+//Display setup
 U8G2_SSD1306_128X64_NONAME_F_HW_I2C u8g2(U8G2_R0, U8X8_PIN_NONE);
 
+//si5351
+Si5351 si5351;
 
 void getInput() {
   if (pcf.readPin(FREQ_DOWN_PIN)) {
@@ -17,6 +20,16 @@ void getInput() {
   if (pcf.readPin(FREQ_UP_PIN)) {
     trailRadio.set_frequency(1); 
   }
+
+  /*
+  if (pcf.readPin(ID_TIMER_PIN)) {
+    trailRadio.id_timer(1); 
+  }
+
+  if (pcf.readPin(ID_TIMER_RESET_PIN)) {
+    trailRadio.id_timer_reset(1); 
+  }
+  */
 
   if (pcf.readPin(MEM_DOWN_PIN)) {
     trailRadio.decPreset();
@@ -71,7 +84,8 @@ void getInput() {
   }
 }
 
-void configi5351() {
+/*
+void configSI5351() {
   si5351.init(SI5351_CRYSTAL_LOAD_8PF,  0, 0);  // Initialize the SI5351 (commented out).
   si5351.set_correction(cal, SI5351_PLL_INPUT_XO);  // Set frequency correction for SI5351 (commented out).
   si5351.drive_strength(SI5351_CLK0,  SI5351_DRIVE_8MA);  // Set drive strength for SI5351 clock 0 (commented out).
@@ -79,6 +93,7 @@ void configi5351() {
   si5351.output_enable(SI5351_CLK1, 0);  // Disable SI5351 clock 1 (commented out).
   si5351.output_enable(SI5351_CLK2,  0);  // Disable SI5351 clock 2 (commented out).
 }
+*/
 
 void setup() {
   Serial.begin(115200);
